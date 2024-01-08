@@ -27,14 +27,14 @@ public class BlogController {
         //  algo ensure that id should be null or else return error
         return blogService.createBlog(blogDTO);
     }
-    
+
     @PutMapping
     @CrossOrigin(origins = "http://localhost:5173") // Allow requests from the specified origin
     public BlogDTO updateBlog(@RequestBody BlogDTO blogDTO){
         // TODO: 30-12-2023 check if logged use is the owner of blog id(getBlogByIdAndCreatedBy, if yes then only edit
         return blogService.updateBlog(blogDTO);
     }
-    
+
     @GetMapping("/search")
     @CrossOrigin(origins = "http://localhost:5173") // Allow requests from the specified origin
     public List<BlogDTO> searchBlog(@RequestParam(required = true) String value){
@@ -51,5 +51,11 @@ public class BlogController {
 //        void returnNoFavicon() {
 //        }
 //    }
+
+    @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:5173") // Allow requests from the specified origin
+    public void deleteBlog(@PathVariable(required = true) long id) {
+        blogService.deleteBlog(id);
+    }
 }
 
