@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import Markdown from 'react-markdown'
 import { useParams, useNavigate } from 'react-router-dom';
+import EditPreviewMarkdownWindow from '../EditPreviewMarkdownWindow/EditPreviewMarkdownWindow';
 
 export default function EditBlog() {
   const [blog,setBlog] = useState(null);
@@ -48,18 +48,7 @@ export default function EditBlog() {
   }
   return (
     <>
-    <div className='my-12 flex justify-around'>
-        <br /> <br />
-        <div className='left'> 
-            <input value={blog?.title} onChange={handleTitle} className='bg-gray-100 h-10 w-full rounded-sm pl-11' type="text" placeholder='Enter title' /> <br /> <br />
-            <textarea value={blog?.body} onChange={handleBody} className='bg-gray-100 h-28 w-80 rounded-sm p-[40px]' type="text" placeholder='Enter content' /> <br /> <br />
-        </div>
-        <div className='right'> 
-            <div className='bg-gray-100 h-10 rounded-sm p-2' > <Markdown>{blog?.title}</Markdown> </div> <br /> <br />
-            <div className='bg-gray-100 h-28 w-80 rounded-sm p-[40px]' > <Markdown>{blog?.body}</Markdown> </div> <br /> <br />
-        </div>
-
-    </div>
+    <EditPreviewMarkdownWindow blog={blog} handleTitle={handleTitle} handleBody={handleBody}></EditPreviewMarkdownWindow>
     <button onClick={editBlog} className='bg-blue-100 rounded-md h-8 w-16 ml-40'>Edit</button>
     </>
   ) 
