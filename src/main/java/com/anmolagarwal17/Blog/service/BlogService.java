@@ -55,4 +55,8 @@ public class BlogService {
         Blog updatedBlog = blogRepository.save(blogDTO.createBlogObject());
         return new BlogDTO(updatedBlog);
     }
+
+    public void deleteBlog(long id) {
+        blogRepository.deleteById(id);
+    }
 }

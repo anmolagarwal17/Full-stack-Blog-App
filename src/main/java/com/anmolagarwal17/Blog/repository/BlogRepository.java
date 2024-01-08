@@ -11,5 +11,6 @@ public interface BlogRepository extends JpaRepository<Blog, Long> {
 
     @Query(nativeQuery = true, value = "select * from blog where title like CONCAT('%',:searchString,'%') or body like CONCAT('%',:searchString,'%')")
     List<Blog> search(@Param("searchString") String searchString);
+//    Page<Blog> search(@Param("searchString") String searchString, Pageable pageable);
 
 }
